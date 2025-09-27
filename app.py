@@ -311,28 +311,10 @@ with gr.Blocks(title="KRISHI BANDHU - Prototype (Phase 2)", elem_id="main_contai
         <p style="margin:5px; font-size:1em;">Get AI-powered guidance in any language for farmers</p>
     </div>
     """)
-        # Landing container (visible initially)
-    with gr.Column(visible=True) as landing_container:
-        gr.HTML("""
-        <div style="padding:22px; text-align:center;">
-            <h2 style="margin:6px 0;">Welcome to Krishi Bandhu</h2>
-            <p style="max-width:720px; margin:8px auto; color:#222;">
-                Aapka AI-based kheti saathi. Click karke "Start Smart Farming" karo — phir assistant UI open ho jayega.
-            </p>
-        </div>
-        """)
-        start_btn = gr.Button("Start Smart Farming", variant="primary")
+        
 
-    # input_lang = gr.Dropdown(label="Input Language", choices=list(LANGUAGE_MAP.keys()), value="hi")
-    # output_lang = gr.Dropdown(label="Output Language", choices=list(LANGUAGE_MAP.keys()), value="hi")
-
-    # Main app container (hidden initially)
-    with gr.Column(visible=False) as main_container:
-        # language selectors
-        input_lang = gr.Dropdown(label="Input Language", choices=list(LANGUAGE_MAP.keys()), value="hi")
-        output_lang = gr.Dropdown(label="Output Language", choices=list(LANGUAGE_MAP.keys()), value="hi")
-
-
+    input_lang = gr.Dropdown(label="Input Language", choices=list(LANGUAGE_MAP.keys()), value="hi")
+    output_lang = gr.Dropdown(label="Output Language", choices=list(LANGUAGE_MAP.keys()), value="hi")
 
 
     with gr.Tabs():
