@@ -25,16 +25,15 @@ def _guess_mime(path):
     mt, _ = mimetypes.guess_type(path)
     return mt or "image/jpeg"
 
-# Configure Gemini
 # ------------ Configure Gemini (robust) ------------
-import json
+
 API_KEY = os.getenv("GEMINI_API_KEY")
 if not API_KEY:
     print("WARNING: GEMINI_API_KEY environment variable not set.")
 else:
     print("GEMINI_API_KEY found (length):", len(API_KEY))
 
-# configure client
+# try configure client
 try:
     genai.configure(api_key=API_KEY)
     print("genai.configure ok")
@@ -44,17 +43,20 @@ except Exception as e:
 # helper: list available models (for debug)
 def list_available_models():
     try:
-        import requests, os
         key = os.getenv("GEMINI_API_KEY")
         if not key:
             print("list_models: GEMINI_API_KEY not set, skipping")
             return []
-        r = requests.get("https://generativelanguage.googleapis.com/v1/models", params={"key": key}, timeout=20)
+        r = requests.get(
+            "https://generativelanguage.googleapis.com/v1/models",
+            params={"key": key},
+            timeout=20,
+        )
         data = r.json()
         models = []
         if "models" in data:
             for m in data["models"]:
-                name = m.get("name") or m.get("model") or "<no-name>"
+                name = m.get("name") or m.get("model") or m.get("id") or "<no-name>"
                 models.append(name)
         print("list_models() ->", models)
         return models
@@ -62,23 +64,31 @@ def list_available_models():
         print("list_models error:", e)
         return []
 
-# Try preferred model names (use available list as hint)
-PREFERRED = ["models/gemini-2.5-flash", "gemini-2.5-flash", "models/gemini-2.5-pro", "gemini-2.5-pro"]
+# Preferred candidates (order matters)
+PREFERRED = [
+    "models/gemini-2.5-flash",
+    "gemini-2.5-flash",
+    "models/gemini-2.5-pro",
+    "gemini-2.5-pro",
+    "models/gemini-2.0-flash",
+    "gemini-2.0-flash",
+]
+
 AVAILABLE = list_available_models()
 
 chosen = None
+# try preferred names first
 for cand in PREFERRED:
     try:
         print("Trying to create GenerativeModel with:", cand)
         m = genai.GenerativeModel(cand)
-        # quick probe: don't call generate yet, just keep it
         chosen = (cand, m)
         print("Successfully created model object for:", cand)
         break
     except Exception as e:
         print("Could not create model for", cand, ":", e)
 
-# If still not chosen, try first available model from list
+# if none from preferred, try any available from list
 if chosen is None and AVAILABLE:
     for a in AVAILABLE:
         try:
@@ -90,13 +100,13 @@ if chosen is None and AVAILABLE:
         except Exception as e:
             print("Failed to create model for", a, ":", e)
 
+# final fallback (dummy) so app doesn't crash with NameError
 if chosen is None:
     print("ERROR: No usable model object could be created. Using a dummy wrapper that will raise at runtime.")
-    # fallback dummy to avoid NameError
-    class Dummy:
+    class DummyModel:
         def generate_content(self, *args, **kwargs):
             raise RuntimeError("No model available; check GEMINI_API_KEY and model names.")
-    model = Dummy()
+    model = DummyModel()
 else:
     model = chosen[1]
     print("Using model identifier:", chosen[0])
