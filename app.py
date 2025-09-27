@@ -30,7 +30,15 @@ API_KEY = os.getenv("GEMINI_API_KEY")
 if not API_KEY:
     print("WARNING: GEMINI_API_KEY environment variable not set.")
 genai.configure(api_key=API_KEY)
-model = genai.GenerativeModel("gemini-1.5-flash")
+# model = genai.GenerativeModel("gemini-1.5-flash")
+# Prefer full resource name (works for most setups)
+try:
+    model = genai.GenerativeModel("models/gemini-2.5-flash")
+except Exception as e:
+    # Fallback: some client versions expect short name
+    print("GenerativeModel(models/...) failed:", e)
+    model = genai.GenerativeModel("gemini-2.5-flash")
+
 
 # ---------- Helpers ----------
 def _stream_or_text(response):
