@@ -1,0 +1,689 @@
+<!-- <!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Digital Krishi Doctor</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+    :root {
+      --dkd-green: #437628;
+      --dkd-yellow: #f7dc6f;
+      --dkd-brown: #8b5e3c;
+      --dkd-bg-dark: #121212;
+      --dkd-surface-dark: #1E1E1E;
+      --dkd-text-primary: #FFFFFF;
+      --dkd-text-secondary: #B0B0B0;
+    }
+    body {
+      font-family: 'Lexend', sans-serif;
+    }
+    .card {
+      @apply bg-[var(--dkd-surface-dark)] rounded-2xl p-6 flex flex-col gap-4 shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+    }
+    .card-icon {
+      @apply w-12 h-12 rounded-full flex items-center justify-center text-white;
+    }
+  </style>
+</head>
+<body class="bg-[var(--dkd-bg-dark)] text-[var(--dkd-text-primary)]">
+<div class="relative flex flex-col min-h-screen">
+<header class="sticky top-0 z-10 bg-[var(--dkd-surface-dark)]/80 backdrop-blur-sm">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-20">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[var(--dkd-green)] text-4xl">eco</span>
+<div>
+<h1 class="text-xl font-bold">Digital Krishi Doctor</h1>
+<p class="text-xs text-[var(--dkd-text-secondary)]">AI-powered guidance for farmers in any language</p>
+<p class="text-xs text-[var(--dkd-text-secondary)]">एआई-संचालित मार्गदर्शन किसानों के लिए किसी भी भाषा में</p>
+</div>
+</div>
+<button class="md:hidden p-2 rounded-md text-[var(--dkd-text-primary)]">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</header>
+<main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<div class="card lg:col-span-2">
+<div class="flex items-center gap-4">
+<div class="card-icon bg-blue-500">
+<span class="material-symbols-outlined text-3xl">partly_cloudy_day</span>
+</div>
+<h2 class="text-2xl font-bold">Weather</h2>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<p class="text-5xl font-bold">28°C</p>
+<p class="text-[var(--dkd-text-secondary)]">Sunny</p>
+</div>
+<div class="text-right">
+<p class="text-lg">Wind</p>
+<p class="text-[var(--dkd-text-secondary)]">15 km/h</p>
+</div>
+</div>
+</div>
+<div class="card lg:col-span-2">
+<div class="flex items-center gap-4">
+<div class="card-icon bg-[var(--dkd-brown)]">
+<span class="material-symbols-outlined text-3xl">compost</span>
+</div>
+<h2 class="text-2xl font-bold">Soil Health</h2>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+<div>
+<p class="text-2xl font-bold">6.5</p>
+<p class="text-[var(--dkd-text-secondary)]">pH</p>
+</div>
+<div>
+<p class="text-2xl font-bold">120</p>
+<p class="text-[var(--dkd-text-secondary)]">Nitrogen (kg/ha)</p>
+</div>
+<div>
+<p class="text-2xl font-bold">80</p>
+<p class="text-[var(--dkd-text-secondary)]">Phosphorus (kg/ha)</p>
+</div>
+<div>
+<p class="text-2xl font-bold">100</p>
+<p class="text-[var(--dkd-text-secondary)]">Potassium (kg/ha)</p>
+</div>
+</div>
+</div>
+<div class="card lg:col-span-2 xl:col-span-3">
+<div class="flex items-center gap-4">
+<div class="card-icon bg-[var(--dkd-green)]">
+<span class="material-symbols-outlined text-3xl">grass</span>
+</div>
+<h2 class="text-2xl font-bold">Crop Advisor</h2>
+</div>
+<div>
+<h3 class="font-bold text-lg mb-2">Suggested Crops</h3>
+<div class="flex gap-2">
+<span class="bg-gray-700/50 px-3 py-1 rounded-full text-sm">Wheat (गेहूँ)</span>
+<span class="bg-gray-700/50 px-3 py-1 rounded-full text-sm">Rice (चावल)</span>
+</div>
+</div>
+<div>
+<h3 class="font-bold text-lg mb-2">Fertilizers</h3>
+<div class="flex gap-2">
+<span class="bg-gray-700/50 px-3 py-1 rounded-full text-sm">Urea (यूरिया)</span>
+<span class="bg-gray-700/50 px-3 py-1 rounded-full text-sm">DAP</span>
+</div>
+</div>
+<div>
+<h3 class="font-bold text-lg mb-2">Pest Management</h3>
+<p class="text-[var(--dkd-text-secondary)]">Monitor for aphids, use neem oil. (एफिड्स के लिए निगरानी करें, नीम तेल का प्रयोग करें।)</p>
+</div>
+</div>
+<div class="card lg:col-span-2 xl:col-span-1 bg-red-900/50 border border-red-500">
+<div class="flex items-center gap-4">
+<div class="card-icon bg-red-500">
+<span class="material-symbols-outlined text-3xl">warning</span>
+</div>
+<h2 class="text-2xl font-bold">Alerts</h2>
+</div>
+<div>
+<h3 class="font-bold text-lg text-red-300">Pest Attack Detected</h3>
+<p class="text-white">Aphids on wheat field. (गेहूं के खेत पर एफिड्स।)</p>
+</div>
+<div>
+<h3 class="font-bold text-lg text-yellow-300">Irrigation Reminder</h3>
+<p class="text-white">Water rice field in 2 days. (2 दिनों में धान के खेत में पानी दें।)</p>
+</div>
+</div>
+<div class="card xl:col-span-2">
+<div class="flex items-center gap-4">
+<div class="card-icon bg-orange-500">
+<span class="material-symbols-outlined text-3xl">calculate</span>
+</div>
+<h2 class="text-2xl font-bold">Fertilizer Calculator</h2>
+</div>
+<p class="text-[var(--dkd-text-secondary)]">Calculate fertilizer needs based on your crop and soil health data. (अपनी फसल और मिट्टी के स्वास्थ्य डेटा के आधार पर उर्वरक की जरूरतों की गणना करें।)</p>
+<button class="mt-2 w-full bg-[var(--dkd-green)] hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg transition-colors duration-300">Calculate</button>
+</div>
+</div>
+</main>
+<div class="fixed bottom-6 right-6 z-20">
+<button class="bg-[var(--dkd-green)] hover:bg-green-700 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-4xl">mic</span>
+</button>
+</div>
+</div>
+
+</body></html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Krishi Doctor 🌾</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes bounce-in {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .chat-bubble {
+      animation: bounce-in 0.6s ease;
+    }
+    .hero-overlay {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('KRISHI BANDHU.png') center/cover no-repeat;
+    }
+  </style>
+</head>
+<body class="bg-[#f4f9f4] text-gray-800 font-sans">
+
+  <!-- Header -->
+  <header class="absolute top-0 left-0 w-full z-20 bg-[#437628e6]">
+    <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 text-white">
+      <div class="text-2xl font-bold">🌾 KRISHI <span class="text-yellow-300">BANDHU</span></div>
+      <ul class="hidden md:flex space-x-8 font-medium">
+        <li><a href="#" class="hover:text-yellow-300">Home</a></li>
+        <li><a href="#features" class="hover:text-yellow-300">Features</a></li>
+        <li><a href="#demo" class="hover:text-yellow-300">Demo</a></li>
+        <li><a href="#impact" class="hover:text-yellow-300">Impact</a></li>
+        <li><a href="#contact" class="hover:text-yellow-300">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex flex-col items-center justify-center text-white text-center px-6">
+    <div class="absolute inset-0 hero-overlay"></div>
+    <div class="relative z-10">
+      <h1 id="typing-title" class="text-4xl md:text-6xl font-bold mb-4"></h1>
+      <p id="typing-subtitle" class="text-lg md:text-xl mb-8"></p>
+      <blockquote class="italic text-xl md:text-2xl text-yellow-300 mb-6">
+        <!-- "Empowering Farmers with AI-driven Smart Solutions" -->
+      </blockquote>
+      <a href="/gradio" target="_blank">
+        <button class="bg-white text-[#437628] px-6 py-3 rounded-2xl font-semibold text-lg shadow-lg hover:bg-green-100 transition">
+          🌱 Start Farming Smarter
+        </button>
+      </a>
+    </div>
+  </section>
+
+  <!-- Chat Demo Section -->
+   <!-- Live Demo - Weather & Mandi -->
+<section class="py-16 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">🌟 Live Demo – Smart Insights</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+
+      <!-- Weather Alerts Card -->
+      <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl hover:scale-105 transform transition duration-300">
+        <h3 class="text-xl font-semibold text-blue-600 mb-4">🌦 Weather Alert</h3>
+        <p class="text-gray-700"><b>Alert:</b> Heavy Rainfall Expected</p>
+        <p class="text-gray-700"><b>Location:</b> Lucknow</p>
+        <p class="text-gray-700"><b>Advisory:</b> Delay irrigation by 2 days</p>
+      </div>
+
+      <!-- Mandi Prices Card -->
+      <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl hover:scale-105 transform transition duration-300">
+        <h3 class="text-xl font-semibold text-green-600 mb-4">🏷 Mandi Prices</h3>
+        <p class="text-gray-700"><b>Crop:</b> Wheat 🌾</p>
+        <p class="text-gray-700"><b>Price:</b> ₹2,150/quintal</p>
+        <p class="text-gray-700"><b>Market:</b> Kanpur Mandi</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- <section class="py-16 px-6 bg-gray-100 text-center">
+    <h2 class="text-3xl font-bold mb-6">🎙️ Live Demo</h2>
+    <div class="max-w-md mx-auto bg-white shadow-lg rounded-2xl p-6 space-y-4">
+      <div class="chat-bubble text-left">
+        <div class="inline-block bg-green-200 px-4 py-2 rounded-2xl text-gray-800">
+          👩‍🌾 Farmer: "Meri gehun ki fasal pe peele daag aa rahe hain, kya karu?"
+        </div>
+      </div>
+      <div class="chat-bubble text-right">
+        <div class="inline-block bg-blue-200 px-4 py-2 rounded-2xl text-gray-800">
+          🤖 AI: "Ye wheat rust ho sakta hai. Turant fungus spray kijiye aur paani ka jamaav mat hone dein."
+        </div>
+      </div>
+    </div>
+    <p class="mt-4 text-gray-600">Farmers ask → AI replies instantly in their language</p>
+  </section> -->
+
+  <!-- Features Section -->
+  <!-- <section id="features" class="py-16 px-6 max-w-6xl mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-12">✨ Key Features</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+      <div class="p-6 bg-white rounded-2xl shadow hover:shadow-lg transition">
+        <span class="text-4xl">📸</span>
+        <h3 class="text-xl font-semibold mt-4">Image Diagnosis</h3>
+        <p class="text-gray-600 mt-2">Detect crop diseases from images instantly.</p>
+      </div>
+      <div class="p-6 bg-white rounded-2xl shadow hover:shadow-lg transition">
+        <span class="text-4xl">🎙️</span>
+        <h3 class="text-xl font-semibold mt-4">Voice Bot</h3>
+        <p class="text-gray-600 mt-2">Ask questions in your own language with speech.</p>
+      </div>
+      <div class="p-6 bg-white rounded-2xl shadow hover:shadow-lg transition">
+        <span class="text-4xl">📍</span>
+        <h3 class="text-xl font-semibold mt-4">Location Advisory</h3>
+        <p class="text-gray-600 mt-2">Get weather & soil-based smart guidance.</p>
+      </div>
+      <div class="p-6 bg-white rounded-2xl shadow hover:shadow-lg transition">
+        <span class="text-4xl">🌱</span>
+        <h3 class="text-xl font-semibold mt-4">Fertilizer Calculator</h3>
+        <p class="text-gray-600 mt-2">Accurate dosage recommendations for crops.</p>
+      </div>
+    </div>
+  </section> -->
+
+
+  <!-- Features Section -->
+<section id="features" class="py-16 px-6 max-w-6xl mx-auto">
+  <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">✨ Key Features</h2>
+
+  <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+    
+    <!-- Feature 1 -->
+    <div class="group p-6 bg-white rounded-3xl shadow-md hover:shadow-xl transition duration-300">
+      <div class="text-5xl mb-4 bg-gradient-to-r from-green-400 to-yellow-300 inline-block p-4 rounded-full text-transparent bg-clip-text">
+        📸
+      </div>
+      <h3 class="text-xl font-semibold mb-2 group-hover:text-green-600 transition duration-300">Image Diagnosis</h3>
+      <p class="text-gray-600">Detect crop diseases from images instantly using AI-driven analysis.</p>
+    </div>
+
+    <!-- Feature 2 -->
+    <div class="group p-6 bg-white rounded-3xl shadow-md hover:shadow-xl transition duration-300">
+      <div class="text-5xl mb-4 bg-gradient-to-r from-green-400 to-yellow-300 inline-block p-4 rounded-full text-transparent bg-clip-text">
+        🎙️
+      </div>
+      <h3 class="text-xl font-semibold mb-2 group-hover:text-green-600 transition duration-300">Voice Bot</h3>
+      <p class="text-gray-600">Ask questions in your own language and get instant voice replies.</p>
+    </div>
+
+    <!-- Feature 3 -->
+    <div class="group p-6 bg-white rounded-3xl shadow-md hover:shadow-xl transition duration-300">
+      <div class="text-5xl mb-4 bg-gradient-to-r from-green-400 to-yellow-300 inline-block p-4 rounded-full text-transparent bg-clip-text">
+        📍
+      </div>
+      <h3 class="text-xl font-semibold mb-2 group-hover:text-green-600 transition duration-300">Location Advisory</h3>
+      <p class="text-gray-600">Get weather-based and soil-based smart guidance for your fields.</p>
+    </div>
+
+    <!-- Feature 4 -->
+    <div class="group p-6 bg-white rounded-3xl shadow-md hover:shadow-xl transition duration-300">
+      <div class="text-5xl mb-4 bg-gradient-to-r from-green-400 to-yellow-300 inline-block p-4 rounded-full text-transparent bg-clip-text">
+        🌱
+      </div>
+      <h3 class="text-xl font-semibold mb-2 group-hover:text-green-600 transition duration-300">Fertilizer Calculator</h3>
+      <p class="text-gray-600">Get accurate fertilizer dosage recommendations for all crop types.</p>
+    </div>
+
+    <!-- Feature 5 (New) -->
+<div class="group p-6 bg-white rounded-3xl shadow-md hover:shadow-xl transition duration-300">
+<div class="text-5xl mb-4 bg-gradient-to-r from-green-400 to-yellow-300 inline-block p-4 rounded-full text-transparent bg-clip-text">🏷️</div>
+<h3 class="text-xl font-semibold mb-2 group-hover:text-green-600 transition duration-300">Mandi Prices</h3>
+<p class="text-gray-600">Check real-time market rates of crops in your nearest mandi. <br><span class="text-sm text-gray-500">(उदाहरण: आज दिल्ली मंडी में टमाटर ₹40/kg)</span></p>
+</div>
+
+
+<!-- Feature 6 (New) -->
+<div class="group p-6 bg-white rounded-3xl shadow-md hover:shadow-xl transition duration-300">
+<div class="text-5xl mb-4 bg-gradient-to-r from-green-400 to-yellow-300 inline-block p-4 rounded-full text-transparent bg-clip-text">🚨</div>
+<h3 class="text-xl font-semibold mb-2 group-hover:text-green-600 transition duration-300">Location Alerts</h3>
+<p class="text-gray-600">Get instant alerts for weather, pests & irrigation reminders. <br><span class="text-sm text-gray-500">(उदाहरण: रात में पाला पड़ने का अलर्ट और फसल बचाव उपाय)</span></p>
+
+  </div>
+</section>
+
+
+<!-- Impact Section -->
+<section id="impact" class="py-16 px-6 bg-gray-50 text-center">
+  <h2 class="text-3xl md:text-4xl font-bold mb-12">🌍 Impact of KRISHI BANDHU</h2>
+  
+  <div class="max-w-5xl mx-auto grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    
+    <!-- Impact Item -->
+    <div class="impact-item p-6 bg-white rounded-3xl shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
+      <div class="text-4xl mb-4 animate-bounce">🌾</div>
+      <p class="text-gray-700 font-semibold">Supports 10+ Indian languages</p>
+    </div>
+    
+    <div class="impact-item p-6 bg-white rounded-3xl shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
+      <div class="text-4xl mb-4 animate-bounce">📱</div>
+      <p class="text-gray-700 font-semibold">Works on mobile & desktop</p>
+    </div>
+    
+    <div class="impact-item p-6 bg-white rounded-3xl shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
+      <div class="text-4xl mb-4 animate-bounce">🤖</div>
+      <p class="text-gray-700 font-semibold">Instant, reliable, and AI-powered guidance</p>
+    </div>
+    
+    <div class="impact-item p-6 bg-white rounded-3xl shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
+      <div class="text-4xl mb-4 animate-bounce">⚡</div>
+      <p class="text-gray-700 font-semibold">Reduces crop loss by early disease detection</p>
+    </div>
+    
+    <div class="impact-item p-6 bg-white rounded-3xl shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
+      <div class="text-4xl mb-4 animate-bounce">⏱️</div>
+      <p class="text-gray-700 font-semibold">Saves time and labor with instant advice</p>
+    </div>
+    
+    <div class="impact-item p-6 bg-white rounded-3xl shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
+      <div class="text-4xl mb-4 animate-bounce">📍</div>
+      <p class="text-gray-700 font-semibold">Personalized guidance based on location & soil type</p>
+    </div>
+    
+    <div class="impact-item p-6 bg-white rounded-3xl shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
+      <div class="text-4xl mb-4 animate-bounce">🌱</div>
+      <p class="text-gray-700 font-semibold">Eco-friendly suggestions for fertilizers and pesticides</p>
+    </div>
+    
+    <div class="impact-item p-6 bg-white rounded-3xl shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
+      <div class="text-4xl mb-4 animate-bounce">📈</div>
+      <p class="text-gray-700 font-semibold">Improves crop yield and productivity</p>
+    </div>
+    
+    <div class="impact-item p-6 bg-white rounded-3xl shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
+      <div class="text-4xl mb-4 animate-bounce">💡</div>
+      <p class="text-gray-700 font-semibold">Helps farmers make data-driven decisions</p>
+    </div>
+
+    <div class="impact-item p-6 bg-white rounded-3xl shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
+      <div class="text-4xl mb-4 animate-bounce">💰</div>
+      <p class="text-gray-700 font-semibold">Cost-effective solutions for small & marginal farmers</p>
+    </div>
+
+    <div class="impact-item p-6 bg-white rounded-3xl shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
+      <div class="text-4xl mb-4 animate-bounce">🌾🌦️</div>
+      <p class="text-gray-700 font-semibold">Supports multiple crop types & seasonal recommendations</p>
+    </div>
+
+    <div class="impact-item p-6 bg-white rounded-3xl shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
+      <div class="text-4xl mb-4 animate-bounce">📢</div>
+      <p class="text-gray-700 font-semibold">Access to expert farming advice anytime, anywhere</p>
+    </div>
+    
+  </div>
+</section>
+
+<!-- Call to Action -->
+<section class="relative py-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
+  <!-- Background Image Container -->
+<div class="absolute inset-0 rounded-3xl overflow-hidden transform transition-transform duration-500 hover:scale-105 w-full h-full">
+  <div class="absolute inset-0 w-full h-full bg-cover bg-center" style="background-image: url('field-8.webp');"></div>
+  <!-- Dark overlay for text readability -->
+  <div class="absolute inset-0 w-full h-full bg-black bg-opacity-40"></div>
+</div>
+
+
+  <!-- Content -->
+  <div class="relative z-10 text-center max-w-3xl px-6">
+    <h2 class="text-3xl sm:text-4xl  md:text-5xl font-extrabold mb-4">Ready to Try?</h2>
+    <p class="text-lg sm:text-xl text-gray-200 mb-8">Start smart farming with AI guidance instantly.</p>
+    <a href="/gradio" target="_blank">
+      <button class="bg-white text-[#437628] px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg 
+                     hover:bg-green-100 hover:scale-105 transition-transform duration-300">
+        🚜 Start Now
+      </button>
+    </a>
+  </div>
+</section>
+<!-- FAQ Section -->
+<section class="py-16 bg-white">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">❓ Frequently Asked Questions (FAQ) / अक्सर पूछे जाने वाले प्रश्न</h2>
+    <div class="space-y-4">
+<!-- 🌾 Farmer’s FAQ Section (English + Hindi) -->
+<section class="bg-gray-50 py-12" id="faq">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-green-700 mb-8 text-center">
+      🌱 Farmer’s Frequently Asked Questions / किसान के सामान्य प्रश्न
+    </h2>
+
+    <div class="space-y-4">
+
+      <!-- Q1 -->
+      <details class="group bg-white p-4 rounded-xl shadow-md">
+        <summary class="flex justify-between items-center cursor-pointer font-semibold text-lg">
+          🌾 How can I improve soil fertility naturally? /
+          मैं मिट्टी की उर्वरता को प्राकृतिक तरीके से कैसे बढ़ा सकता हूँ?
+          <span class="transition group-open:rotate-180">⬇️</span>
+        </summary>
+        <p class="mt-2 text-gray-700">
+          By crop rotation, green manure, compost, and avoiding overuse of chemicals. <br>
+          फसल चक्र अपनाकर, हरी खाद, कम्पोस्ट और रसायनों का कम प्रयोग करके।
+        </p>
+      </details>
+
+      <!-- Q2 -->
+      <details class="group bg-white p-4 rounded-xl shadow-md">
+        <summary class="flex justify-between items-center cursor-pointer font-semibold text-lg">
+          💧 How much water should I give to wheat crop? /
+          गेहूँ की फसल को कितना पानी देना चाहिए?
+          <span class="transition group-open:rotate-180">⬇️</span>
+        </summary>
+        <p class="mt-2 text-gray-700">
+          Wheat needs 4–5 irrigations depending on soil and rainfall. <br>
+          गेहूँ की फसल को 4–5 बार सिंचाई की आवश्यकता होती है, जो मिट्टी और वर्षा पर निर्भर करती है।
+        </p>
+      </details>
+
+      <!-- Q3 -->
+      <details class="group bg-white p-4 rounded-xl shadow-md">
+        <summary class="flex justify-between items-center cursor-pointer font-semibold text-lg">
+          🌱 Which fertilizer is best for paddy? /
+          धान के लिए कौन सा खाद सबसे अच्छा है?
+          <span class="transition group-open:rotate-180">⬇️</span>
+        </summary>
+        <p class="mt-2 text-gray-700">
+          Balanced use of Urea (N), DAP (P), and Potash (K) as per soil test. <br>
+          मिट्टी की जाँच के अनुसार यूरिया (N), डीएपी (P), और पोटाश (K) का संतुलित उपयोग करें।
+        </p>
+      </details>
+
+      <!-- Q4 -->
+      <details class="group bg-white p-4 rounded-xl shadow-md">
+        <summary class="flex justify-between items-center cursor-pointer font-semibold text-lg">
+          🐛 How can I control pests without heavy pesticides? /
+          भारी कीटनाशक का उपयोग किए बिना कीटों को कैसे नियंत्रित करें?
+          <span class="transition group-open:rotate-180">⬇️</span>
+        </summary>
+        <p class="mt-2 text-gray-700">
+          Use pheromone traps, neem-based bio-pesticides, and timely sowing. <br>
+          फेरोमोन ट्रैप, नीम आधारित जैविक कीटनाशक और समय पर बुवाई करें।
+        </p>
+      </details>
+
+      <!-- Q5 -->
+      <details class="group bg-white p-4 rounded-xl shadow-md">
+        <summary class="flex justify-between items-center cursor-pointer font-semibold text-lg">
+          🌦 What should farmers do before heavy rains? /
+          भारी बारिश से पहले किसानों को क्या करना चाहिए?
+          <span class="transition group-open:rotate-180">⬇️</span>
+        </summary>
+        <p class="mt-2 text-gray-700">
+          Drain excess water, store seeds safely, and protect standing crops. <br>
+          अतिरिक्त पानी की निकासी करें, बीज सुरक्षित रखें और खड़ी फसल की सुरक्षा करें।
+        </p>
+      </details>
+
+      <!-- Q6 -->
+      <details class="group bg-white p-4 rounded-xl shadow-md">
+        <summary class="flex justify-between items-center cursor-pointer font-semibold text-lg">
+          🏷 Why do mandi prices change daily? /
+          मंडी के दाम रोज़ क्यों बदलते हैं?
+          <span class="transition group-open:rotate-180">⬇️</span>
+        </summary>
+        <p class="mt-2 text-gray-700">
+          Prices depend on supply, demand, and government MSP policies. <br>
+          दाम आपूर्ति, मांग और सरकारी MSP नीतियों पर निर्भर करते हैं।
+        </p>
+      </details>
+
+      <!-- Q7 -->
+      <details class="group bg-white p-4 rounded-xl shadow-md">
+        <summary class="flex justify-between items-center cursor-pointer font-semibold text-lg">
+          🚜 Which crops are good for small farmers with less land? /
+          छोटे किसानों के लिए कौन सी फसलें अच्छी होती हैं?
+          <span class="transition group-open:rotate-180">⬇️</span>
+        </summary>
+        <p class="mt-2 text-gray-700">
+          Vegetables, pulses, and short-duration crops give better returns. <br>
+          सब्जियाँ, दालें और कम समय वाली फसलें बेहतर लाभ देती हैं।
+        </p>
+      </details>
+
+      <!-- Q8 -->
+      <details class="group bg-white p-4 rounded-xl shadow-md">
+        <summary class="flex justify-between items-center cursor-pointer font-semibold text-lg">
+          📸 How can I identify crop diseases? /
+          मैं फसल की बीमारियाँ कैसे पहचानूँ?
+          <span class="transition group-open:rotate-180">⬇️</span>
+        </summary>
+        <p class="mt-2 text-gray-700">
+          Look for unusual spots, yellowing, stunted growth, and use advisory apps. <br>
+          पत्तियों पर धब्बे, पीली पत्तियाँ, रुकावट वाली बढ़त देखें और सलाहकार ऐप का उपयोग करें।
+        </p>
+      </details>
+
+      <!-- Q9 -->
+      <details class="group bg-white p-4 rounded-xl shadow-md">
+        <summary class="flex justify-between items-center cursor-pointer font-semibold text-lg">
+          🗣 Can farmers get advice in their local language? /
+          क्या किसानों को अपनी भाषा में सलाह मिल सकती है?
+          <span class="transition group-open:rotate-180">⬇️</span>
+        </summary>
+        <p class="mt-2 text-gray-700">
+          Yes, many advisory platforms support Hindi & regional languages. <br>
+          हाँ, कई सलाहकारी प्लेटफ़ॉर्म हिंदी और क्षेत्रीय भाषाओं को सपोर्ट करते हैं।
+        </p>
+      </details>
+
+      <!-- Q10 -->
+      <details class="group bg-white p-4 rounded-xl shadow-md">
+        <summary class="flex justify-between items-center cursor-pointer font-semibold text-lg">
+          🔐 How can farmers avoid fake seeds & fertilizers? /
+          नकली बीज और खाद से किसान कैसे बचें?
+          <span class="transition group-open:rotate-180">⬇️</span>
+        </summary>
+        <p class="mt-2 text-gray-700">
+          Always buy from authorized dealers and check government certification. <br>
+          हमेशा लाइसेंसधारी डीलर से खरीदें और सरकारी प्रमाणपत्र देखें।
+        </p>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- Footer Section -->
+<footer class="bg-[#437628e8] text-white py-12 px-6">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+    
+    <!-- About / Logo -->
+    <div class="flex flex-col items-start">
+      <div class="text-2xl font-bold mb-2">🌾 KRISHI<span class="text-yellow-300">BANDHU</span></div>
+      <p class="text-gray-200">Empowering farmers across India with AI-driven smart farming solutions.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-yellow-300 transition">Home</a></li>
+        <li><a href="#features" class="hover:text-yellow-300 transition">Features</a></li>
+        <li><a href="#demo" class="hover:text-yellow-300 transition">Demo</a></li>
+        <li><a href="#impact" class="hover:text-yellow-300 transition">Impact</a></li>
+        <li><a href="#contact" class="hover:text-yellow-300 transition">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact / Social -->
+    <div>
+      <h3 class="text-lg font-semibold mb-4">Connect with Us</h3>
+      <p class="text-gray-200 mb-4">Email: <a href="mailto:support@krishidoctor.com" class="underline hover:text-yellow-300">support@krishidoctor.com</a></p>
+      <div class="flex space-x-4">
+        <a href="#" class="hover:text-yellow-300 transition text-2xl">🌐</a>
+        <a href="#" class="hover:text-yellow-300 transition text-2xl">📱</a>
+        <a href="#" class="hover:text-yellow-300 transition text-2xl">🐦</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Copyright -->
+  <div class="mt-12 text-center text-gray-300 text-sm">
+    &copy; 2025 Digital Krishi Doctor. All rights reserved.
+  </div>
+</footer>
+
+
+
+
+
+
+  <!-- Typing Animation Script -->
+  <script>
+    function typeWriter(elementId, text, delay = 100, callback = null) {
+      let i = 0;
+      function typing() {
+        if (i < text.length) {
+          document.getElementById(elementId).innerHTML += text.charAt(i);
+          i++;
+          setTimeout(typing, delay);
+        } else if (callback) {
+          callback();
+        }
+      }
+      typing();
+    }
+
+    window.onload = function() {
+      typeWriter("typing-title", "🌾 KRISHI BANDHU", 100, function() {
+        typeWriter("typing-subtitle", "Empowering Farmers with AI-driven Smart Solutions", 50);
+      });
+    };
+  </script>
+
+<!-- 3. Initialize AOS at the end of <body> -->
+<script>
+  AOS.init({
+    duration: 800, // animation duration in ms
+    once: true,    // animation happens only once when scrolling down
+  });
+</script>
+
+
+</body>
+</html>

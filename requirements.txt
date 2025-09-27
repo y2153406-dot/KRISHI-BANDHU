@@ -1,0 +1,6 @@
+gradio
+google-generativeai
+gtts
+Pillow
+requests
+pyttsx3
