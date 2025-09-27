@@ -26,18 +26,82 @@ def _guess_mime(path):
     return mt or "image/jpeg"
 
 # Configure Gemini
+# ------------ Configure Gemini (robust) ------------
+import json
 API_KEY = os.getenv("GEMINI_API_KEY")
 if not API_KEY:
     print("WARNING: GEMINI_API_KEY environment variable not set.")
-genai.configure(api_key=API_KEY)
-# model = genai.GenerativeModel("gemini-1.5-flash")
-# Prefer full resource name (works for most setups)
+else:
+    print("GEMINI_API_KEY found (length):", len(API_KEY))
+
+# configure client
 try:
-    model = genai.GenerativeModel("models/gemini-2.5-flash")
+    genai.configure(api_key=API_KEY)
+    print("genai.configure ok")
 except Exception as e:
-    # Fallback: some client versions expect short name
-    print("GenerativeModel(models/...) failed:", e)
-    model = genai.GenerativeModel("gemini-2.5-flash")
+    print("genai.configure failed:", e)
+
+# helper: list available models (for debug)
+def list_available_models():
+    try:
+        import requests, os
+        key = os.getenv("GEMINI_API_KEY")
+        if not key:
+            print("list_models: GEMINI_API_KEY not set, skipping")
+            return []
+        r = requests.get("https://generativelanguage.googleapis.com/v1/models", params={"key": key}, timeout=20)
+        data = r.json()
+        models = []
+        if "models" in data:
+            for m in data["models"]:
+                name = m.get("name") or m.get("model") or "<no-name>"
+                models.append(name)
+        print("list_models() ->", models)
+        return models
+    except Exception as e:
+        print("list_models error:", e)
+        return []
+
+# Try preferred model names (use available list as hint)
+PREFERRED = ["models/gemini-2.5-flash", "gemini-2.5-flash", "models/gemini-2.5-pro", "gemini-2.5-pro"]
+AVAILABLE = list_available_models()
+
+chosen = None
+for cand in PREFERRED:
+    try:
+        print("Trying to create GenerativeModel with:", cand)
+        m = genai.GenerativeModel(cand)
+        # quick probe: don't call generate yet, just keep it
+        chosen = (cand, m)
+        print("Successfully created model object for:", cand)
+        break
+    except Exception as e:
+        print("Could not create model for", cand, ":", e)
+
+# If still not chosen, try first available model from list
+if chosen is None and AVAILABLE:
+    for a in AVAILABLE:
+        try:
+            print("Trying available model:", a)
+            m = genai.GenerativeModel(a)
+            chosen = (a, m)
+            print("Selected available model:", a)
+            break
+        except Exception as e:
+            print("Failed to create model for", a, ":", e)
+
+if chosen is None:
+    print("ERROR: No usable model object could be created. Using a dummy wrapper that will raise at runtime.")
+    # fallback dummy to avoid NameError
+    class Dummy:
+        def generate_content(self, *args, **kwargs):
+            raise RuntimeError("No model available; check GEMINI_API_KEY and model names.")
+    model = Dummy()
+else:
+    model = chosen[1]
+    print("Using model identifier:", chosen[0])
+# ---------------------------------------------------
+
 
 
 # ---------- Helpers ----------
